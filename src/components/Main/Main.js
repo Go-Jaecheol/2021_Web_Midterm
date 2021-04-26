@@ -1,6 +1,7 @@
 import React, { Component, Fragment } from 'react';
 import "./Main.scss";
 import { BiSearchAlt } from 'react-icons/bi';
+import Calendar from "../Calendar/Calendar";
 
 class Main extends Component {
     render() {
@@ -10,7 +11,7 @@ class Main extends Component {
                     <button className="inputBar"><BiSearchAlt /></button>
                 </div>
                 <div className="mainBody">
-                    
+                    <Calendar></Calendar>
                 </div>
             </Fragment>
         );
