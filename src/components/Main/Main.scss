@@ -1,0 +1,26 @@
+.mainHead {
+    position: relative;
+    height: 20vh;
+    .inputBar {
+        cursor: pointer;
+        background: transparent;
+        font-size: 30px;
+        border-radius: 5px;
+        width: 50%;
+        height: 40%;
+        position: absolute;
+        top: 20%;
+        left: 25%;
+        text-align: left;
+        &:hover{
+          background-color: rgba(gray,0.1);
+        }
+        &:active{
+          background-color: rgba(gray,0.2);
+        }
+    }
+}
+
+.mainBody {
+    position: relative;
+}
