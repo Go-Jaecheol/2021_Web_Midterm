@@ -1,9 +1,9 @@
 import React, { Fragment, useState } from 'react';
 import "./Main.scss";
-import { BiSearchAlt } from 'react-icons/bi';
 import { FiEdit } from 'react-icons/fi';
 import Calendar from "../Calendar/Calendar";
-import Modal from 'react-awesome-modal'
+import Modal from 'react-awesome-modal';
+import EditModal from '../Modal/Modal';
 
 function Main() {
     const [isOpenModal, setOpenModal] = useState(false);
@@ -20,15 +20,7 @@ function Main() {
                 <button className="inputBar" onClick={ openModal }><FiEdit /></button>
 
                 <Modal visible={isOpenModal} width="600" height="400" effect="fadeInDown" onClickAway={closeModal} >
-                    <div className="editModal">
-                        
-                        <button className="searchBar"><BiSearchAlt /></button>
-                        <div className="modalBody">test</div>
-                        <div className="modalFooter">
-                            <button className="editBtn">등록</button>
-                            <button className="closeBtn" onClick={closeModal}>닫기</button>    
-                        </div>
-                    </div>
+                    <EditModal close={closeModal}></EditModal>
                 </Modal>
 
             </div>
@@ -39,4 +31,4 @@ function Main() {
     );
 }
 
-export default Main
+export default Main;
