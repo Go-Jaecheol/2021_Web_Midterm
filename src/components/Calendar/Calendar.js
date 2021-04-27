@@ -2,13 +2,29 @@ import React, { useState } from 'react';
 import './Calendar.scss';
 import { MdChevronLeft, MdChevronRight } from 'react-icons/md';
 import moment from 'moment';
+import Modal from 'react-awesome-modal';
+import EditModal from '../Modal/Modal';
 
 function Calendar() {
         const [getDate, setDate] = useState(moment());
         const today = getDate;
+
+        const [clickDate, setClickDate] = useState();
+        const [isOpenModal, setOpenModal] = useState(false);
+        const openModal = (date) => {
+            setClickDate(date);
+            setOpenModal(true);
+        }
+        const closeModal = () => {
+            setOpenModal(false);
+        }
+
         function createCalendar() {
             const startWeek = today.clone().startOf('month').week();
             const lastWeek = today.clone().endOf('month').week() === 1 ? 53 : today.clone().endOf('month').week();
+            
+
+            
 
             let arr = [];
             for (let week = startWeek; week <= lastWeek; week++) {
@@ -21,10 +37,12 @@ function Calendar() {
                                 let isGray = cur.format('MM') === today.format('MM') ? '' : 'gray';
                                 let isSaved = window.localStorage.getItem(cur.format('YYMMDD')) === null ? '' : 'saved';
                                 return(
-                                    <div className={`box ${isSelected} ${isGray} ${isSaved}`} key={index}>
+                                    <div className={`box ${isSelected} ${isGray} ${isSaved}`} key={index} onClick={ () => {openModal(cur.format('YYMMDD'));}}>
                                         <span className={`text`}>{cur.format('D')}</span>
                                     </div>
+                                
                                 )
+                                
                             })
                         }
                     </div>
@@ -34,6 +52,7 @@ function Calendar() {
         }
         
         return (
+            
             <div className="Calendar">
                 <div className="calendarHead">
                     <button onClick={()=>{ setDate(getDate.clone().subtract(1, 'month'))}}><MdChevronLeft /></button>
@@ -42,7 +61,11 @@ function Calendar() {
                 </div>
                 <div className="calendarBody">
                     {createCalendar()}
+                    <Modal visible={isOpenModal} width="400" height="250" effect="fadeInDown" onClickAway={closeModal} >
+                        <EditModal close={closeModal} date={clickDate} ></EditModal>
+                    </Modal>
                 </div>
+                
             </div>
         );
     }

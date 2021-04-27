@@ -4,17 +4,14 @@ import moment from 'moment';
 
 
 const EditModal = (props) => {
-    const{close} = props;
-
-    const today = moment().format("YYMMDD");
-    const [tilData, setTilData] = useState("");
-
+    const{close, date} = props;
+    const [tilData, setTilData] = useState('');
+    const loadData = window.localStorage.getItem(date) === null ? '' : JSON.parse(window.localStorage.getItem(date)).tilData;
     const saveData = () => {
         const tilObj = { tilData };
-        window.localStorage.setItem(today , JSON.stringify(tilObj));
+        window.localStorage.setItem(date , JSON.stringify(tilObj));
         close();
     };
-
     const onChange = (e) => {
         setTilData(e.target.value);
     };
