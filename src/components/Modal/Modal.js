@@ -1,19 +1,39 @@
-import React, { Fragment, useState } from 'react';
+import React, { useState } from 'react';
 import "./Modal.scss";
-import { FiEdit } from 'react-icons/fi';
+import moment from 'moment';
+
 
 const EditModal = (props) => {
     const{close} = props;
+
+    const today = moment().format("YYMMDD");
+    const [tilData, setTilData] = useState("");
+
+    const saveData = () => {
+        const tilObj = { tilData };
+        window.localStorage.setItem(today , JSON.stringify(tilObj));
+        close();
+    };
+
+    const onChange = (e) => {
+        setTilData(e.target.value);
+    };
+
     return (
         <div className="editModal">
+            <div className="modalHead">
+                <input className="labelBar"></input>
+            </div>
+            <div className="modalBody">
+                
+                <input className="editBar" value={tilData} onChange={onChange}></input>
+            </div>
+            <div className="modalFooter">
+                <button className="editBtn" onClick={saveData}>등록</button>
+                <button className="closeBtn" onClick={close}>닫기</button>    
+            </div>
+        </div>
                         
-                        <button className="searchBar"><FiEdit /></button>
-                        <div className="modalBody">test</div>
-                        <div className="modalFooter">
-                            <button className="editBtn">등록</button>
-                            <button className="closeBtn" onClick={close}>닫기</button>    
-                        </div>
-                    </div>
     );
 }
 

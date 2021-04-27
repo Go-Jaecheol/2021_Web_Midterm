@@ -13,13 +13,13 @@ function Main() {
     const closeModal = () => {
         setOpenModal(false);
     }
-
+    
     return (
         <Fragment>
             <div className="mainHead">
                 <button className="inputBar" onClick={ openModal }><FiEdit /></button>
 
-                <Modal visible={isOpenModal} width="600" height="400" effect="fadeInDown" onClickAway={closeModal} >
+                <Modal visible={isOpenModal} width="400" height="250" effect="fadeInDown" onClickAway={closeModal} >
                     <EditModal close={closeModal}></EditModal>
                 </Modal>
 
