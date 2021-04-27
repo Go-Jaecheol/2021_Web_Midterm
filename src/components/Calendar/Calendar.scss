@@ -48,6 +48,9 @@
             height: 30%;
           }
         }
+        &.saved{
+          background-color: rgba(#823dc7, 0.3);
+        }
         span.text{
           display: inline-flex;
           justify-content: center;

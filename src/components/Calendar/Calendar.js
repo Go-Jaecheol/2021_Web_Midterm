@@ -19,8 +19,9 @@ function Calendar() {
                                 let cur = today.clone().week(week).startOf('week').add(data+index, 'day');
                                 let isSelected = today.format('YYYYMMDD') === cur.format('YYYYMMDD') ? 'selected' : '';
                                 let isGray = cur.format('MM') === today.format('MM') ? '' : 'gray';
+                                let isSaved = window.localStorage.getItem(cur.format('YYMMDD')) === null ? '' : 'saved';
                                 return(
-                                    <div className={`box ${isSelected} ${isGray}`} key={index}>
+                                    <div className={`box ${isSelected} ${isGray} ${isSaved}`} key={index}>
                                         <span className={`text`}>{cur.format('D')}</span>
                                     </div>
                                 )
