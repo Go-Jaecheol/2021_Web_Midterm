@@ -3,7 +3,7 @@ import './Calendar.scss';
 import { MdChevronLeft, MdChevronRight } from 'react-icons/md';
 import moment from 'moment';
 import Modal from 'react-awesome-modal';
-import ViewModal from '../Modal/ViewModal';
+import EditModal from '../Modal/EditModal';
 
 function Calendar() {
         const [getDate, setDate] = useState(moment());
@@ -58,7 +58,7 @@ function Calendar() {
                 <div className="calendarBody">
                     {createCalendar()}
                     <Modal visible={isOpenModal} width="400" height="250" effect="fadeInDown" onClickAway={closeModal} >
-                        <ViewModal close={closeModal} date={clickDate} ></ViewModal>
+                        <EditModal close={closeModal} date={clickDate} ></EditModal>
                     </Modal>
                 </div>
                 
