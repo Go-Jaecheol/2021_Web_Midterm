@@ -1,0 +1,21 @@
+name: React build flows
+
+on:
+  push:
+    branches:
+      - master
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout main source code
+        uses: actions/checkout@main
+      - name: create env file
+        run: |
+          touch .env
+          echo REACT_APP_LASTFM_API=${{ secrets.REACT_APP_LASTFM_API }} >> .env
+      - name: NPM build
+        run: npm run build
+
+  
