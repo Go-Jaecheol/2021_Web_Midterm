@@ -19,7 +19,7 @@ class SearchMusic extends Component {
       var dataArr, data, parsedData;
       try {
         dataArr = await fetch(
-          `http://ws.audioscrobbler.com/2.0/?method=track.search&track=${text}&api_key=${secrets.REACT_APP_LASTFM_API}&format=json`
+          `http://ws.audioscrobbler.com/2.0/?method=track.search&track=${text}&api_key=${process.env.REACT_APP_LASTFM_API}&format=json`
         );
         data = await dataArr.json();
         parsedData = data["results"]["trackmatches"]["track"];
