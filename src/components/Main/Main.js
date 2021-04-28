@@ -20,7 +20,6 @@ function Main() {
         <Fragment>
             <div className="mainHead">
                 <button className="inputBar" onClick={ openModal }><FiEdit /></button>
-
                 <Modal visible={isOpenModal} width="400" height="250" effect="fadeInDown" onClickAway={closeModal} >
                     <EditModal close={closeModal} date={today} ></EditModal>
                 </Modal>

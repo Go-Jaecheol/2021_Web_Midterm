@@ -51,9 +51,9 @@ function Calendar() {
             
             <div className="Calendar">
                 <div className="calendarHead">
-                    <button onClick={()=>{ setDate(getDate.clone().subtract(1, 'month'))}}><MdChevronLeft /></button>
-                    <span className="title">{ today.format('YYYY MMMM') }</span>
-                    <button onClick={()=>{ setDate(getDate.clone().add(1, 'month'))}}><MdChevronRight /></button>
+                    <button className="leftBtn" onClick={()=>{ setDate(getDate.clone().subtract(1, 'month'))}}><MdChevronLeft /></button>
+                    <span className="calendarTitle">{ today.format('YYYY MMMM') }</span>
+                    <button className="rightBtn" onClick={()=>{ setDate(getDate.clone().add(1, 'month'))}}><MdChevronRight /></button>
                 </div>
                 <div className="calendarBody">
                     {createCalendar()}
