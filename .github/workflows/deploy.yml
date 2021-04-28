@@ -15,7 +15,5 @@ jobs:
         run: |
           touch .env
           echo REACT_APP_LASTFM_API=${{ secrets.REACT_APP_LASTFM_API }} >> .env
-      - name: NPM build
-        run: npm run build
 
   
