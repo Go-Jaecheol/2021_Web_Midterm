@@ -38,10 +38,14 @@ const SearchBar = ({ results, keyword, updateField, date}) => {
         value={keyword}
         onChange={e => updateField("keyword", e.target.value)}
       />
-
+      
       {results.length > 0 ? (
         <div className="search-results">{renderResults}</div>
       ) : null}
+      <p className="titleLabel">Title</p>
+      <p className="titleVal">{window.localStorage.getItem(date) === null ? '' : JSON.parse(window.localStorage.getItem(date)).name}</p>
+      <p className="artistLabel">Artist</p>
+      <p className="artistVal">{window.localStorage.getItem(date) === null ? '' : JSON.parse(window.localStorage.getItem(date)).artist}</p>
     </div>
   );
 };

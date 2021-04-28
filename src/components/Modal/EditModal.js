@@ -4,15 +4,6 @@ import SearchMusic from '../SearchMusic/SearchMusic';
 
 const EditModal = (props) => {
     const{close, date} = props;
-    const [tilData, setTilData] = useState('');
-    const saveData = () => {
-        const tilObj = { tilData };
-        window.localStorage.setItem(date , JSON.stringify(tilObj));
-        close();
-    };
-    const onChange = (e) => {
-        setTilData(e.target.value);
-    };
 
     return (
         <div className="editModal">
@@ -20,11 +11,9 @@ const EditModal = (props) => {
                 <SearchMusic date={date}/>
             </div>
             <div className="modalBody">
-                
-                <input className="editBar" value={tilData} onChange={onChange}></input>
             </div>
             <div className="modalFooter">
-                <button className="editBtn" onClick={saveData}>등록</button>
+                <button className="editBtn" onClick={close}>등록</button>
                 <button className="closeBtn" onClick={close}>닫기</button>    
             </div>
         </div>
