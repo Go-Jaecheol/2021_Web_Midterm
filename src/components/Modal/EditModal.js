@@ -1,12 +1,9 @@
 import React, { useState } from 'react';
-import "./Modal.scss";
-import moment from 'moment';
-
+import "./EditModal.scss";
 
 const EditModal = (props) => {
     const{close, date} = props;
     const [tilData, setTilData] = useState('');
-    const loadData = window.localStorage.getItem(date) === null ? '' : JSON.parse(window.localStorage.getItem(date)).tilData;
     const saveData = () => {
         const tilObj = { tilData };
         window.localStorage.setItem(date , JSON.stringify(tilObj));

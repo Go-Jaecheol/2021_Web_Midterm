@@ -3,7 +3,7 @@ import "./Main.scss";
 import { FiEdit } from 'react-icons/fi';
 import Calendar from "../Calendar/Calendar";
 import Modal from 'react-awesome-modal';
-import EditModal from '../Modal/Modal';
+import EditModal from '../Modal/EditModal';
 import moment from 'moment';
 
 function Main() {

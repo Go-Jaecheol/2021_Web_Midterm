@@ -3,7 +3,7 @@ import './Calendar.scss';
 import { MdChevronLeft, MdChevronRight } from 'react-icons/md';
 import moment from 'moment';
 import Modal from 'react-awesome-modal';
-import EditModal from '../Modal/Modal';
+import ViewModal from '../Modal/ViewModal';
 
 function Calendar() {
         const [getDate, setDate] = useState(moment());
@@ -22,10 +22,6 @@ function Calendar() {
         function createCalendar() {
             const startWeek = today.clone().startOf('month').week();
             const lastWeek = today.clone().endOf('month').week() === 1 ? 53 : today.clone().endOf('month').week();
-            
-
-            
-
             let arr = [];
             for (let week = startWeek; week <= lastWeek; week++) {
                 arr.push(
@@ -37,7 +33,7 @@ function Calendar() {
                                 let isGray = cur.format('MM') === today.format('MM') ? '' : 'gray';
                                 let isSaved = window.localStorage.getItem(cur.format('YYMMDD')) === null ? '' : 'saved';
                                 return(
-                                    <div className={`box ${isSelected} ${isGray} ${isSaved}`} key={index} onClick={ () => {openModal(cur.format('YYMMDD'));}}>
+                                    <div className={`box ${isSelected} ${isGray} ${isSaved}`} key={index} onClick={ isSaved ? () => {openModal(cur.format('YYMMDD'));} : undefined }>
                                         <span className={`text`}>{cur.format('D')}</span>
                                     </div>
                                 
@@ -62,13 +58,12 @@ function Calendar() {
                 <div className="calendarBody">
                     {createCalendar()}
                     <Modal visible={isOpenModal} width="400" height="250" effect="fadeInDown" onClickAway={closeModal} >
-                        <EditModal close={closeModal} date={clickDate} ></EditModal>
+                        <ViewModal close={closeModal} date={clickDate} ></ViewModal>
                     </Modal>
                 </div>
                 
             </div>
         );
     }
-
 
 export default Calendar;
