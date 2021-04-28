@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import "./EditModal.scss";
+import SearchMusic from '../SearchMusic/SearchMusic';
 
 const EditModal = (props) => {
     const{close, date} = props;
@@ -16,7 +17,7 @@ const EditModal = (props) => {
     return (
         <div className="editModal">
             <div className="modalHead">
-                <input className="labelBar"></input>
+                <SearchMusic date={date}/>
             </div>
             <div className="modalBody">
                 
